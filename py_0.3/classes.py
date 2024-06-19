@@ -26,7 +26,7 @@ class FilaPrioridade:
 
             pai = self.pai(i)
 
-            if self.fila[pai, 0] < self.fila[i, 0]:
+            if self.fila[pai, 0] > self.fila[i, 0]:
 
                 self.fila[pai], self.fila[i] = self.fila[i], self.fila[pai]
 
@@ -65,11 +65,11 @@ class FilaPrioridade:
 
             maior_filho = filho_e
 
-            if filho_d < len and self.fila[filho_d, 0] > self.fila[filho_e, 0]:
+            if filho_d < len and self.fila[filho_d, 0] < self.fila[filho_e, 0]:
 
                 maior_filho = filho_d
 
-            if self.fila[i, 0] < self.fila[maior_filho, 0]:
+            if self.fila[i, 0] > self.fila[maior_filho, 0]:
 
                 self.fila[i], self.fila[maior_filho] = self.fila[maior_filho], self.fila[i]
 
@@ -112,7 +112,7 @@ class Date_ESEM:
         nome:        tuple[str] = pessoa_0['Nome'],        pessoa_1['Nome']
         genero:      tuple[str] = pessoa_0['Genero'],      pessoa_1['Genero']
         sexualidade: tuple[str] = pessoa_0['Sexualidade'], pessoa_1['Sexualidade']
-        respostas:   np.ndarray = pessoa_0.drop(['Genero', 'Sexualidade'], axis=0).to_numpy() - pessoa_0.drop(['Genero', 'Sexualidade'], axis=0).to_numpy()
+        respostas:   np.ndarray = pessoa_0.drop(['Genero', 'Sexualidade'], axis=0).to_numpy() - pessoa_1.drop(['Genero', 'Sexualidade'], axis=0).to_numpy()
 
         combinacoes_incompativeis: dict[set] = {
             "Hetero": {
